@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Paramètres du compte</title>
+    <style>
+        /* Reset CSS basique */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style général du body */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #181818;
+    color: white;
+    line-height: 1.6;
+}
+
+/* En-tête avec navigation */
+.tete {
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 4%;
+    transition: background-color 0.3s ease;
+}
+
+.navikontene {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    max-width: 1920px;
+    margin: 0 auto;
+    background-color: #181818;
+}
+
+.logo h1 {
+    color: #e50914;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    margin-left: 40px;
+}
+
+.navlien {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.navlien:hover,
+.navlien.active {
+    color: #b3b3b3;
+    color: #e50914;
+}
+
+.utilprofil img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* kontni prensipal */
+.zonekontni {
+    margin-top: 68px;
+    padding: 40px 4%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: ;
+}
+
+.para-kontene {
+    max-width: 800px;
+    margin: 0 auto;background-color: ;
+}
+
+/* Entet paj */
+.tetinfo {
+    margin-bottom: 40px;
+    text-align: center;
+    background-color: ;
+}
+
+.tetinfo h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.tetinfo p {
+    color: #b3b3b3;
+    font-size: 16px;
+}
+
+/* Sections de paramètres */
+.zonepara {
+    background: rgba(42, 42, 42, 0.6);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.zonepara h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+    border-bottom: 2px solid #e50914;
+    padding-bottom: 10px;
+}
+
+/* espa paramet */
+.esppara {
+    display: grid;
+    gap: 20px;
+}
+
+.artipara {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.artipara:last-child {
+    border-bottom: none;
+}
+
+.artipara label {
+    font-weight: 500;
+    color: #e5e5e5;
+    font-size: 16px;
+    flex: 1;
+}
+
+.valepara {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 2;
+    justify-content: flex-end;
+}
+
+.valepara span {
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
+/* btn zone abonman*/
+.modibtn, .ajoubtn {
+    background: transparent;
+    border: 1px solid #e50914;
+    color: #e50914;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modibtn:hover, .ajoubtn:hover {
+    background: #e50914;
+    color: white;
+}
+
+.primebtn {
+    background: #e50914;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.primebtn:hover {
+    background: #f40612;
+}
+
+.segondbtn {
+    background: transparent;
+    border: 1px solid #b3b3b3;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.segondbtn:hover {
+    border-color: white;
+    color: white;
+}
+
+/* zone abonman */
+.aboncat {
+    background: rgba(229, 9, 20, 0.1);
+    border: 1px solid #e50914;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aboninfo h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e50914;
+    margin-bottom: 5px;
+}
+
+.aboninfo p {
+    color: #b3b3b3;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.prix {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.abonaction {
+    display: flex;
+    gap: 10px;
+}
+
+.dlanginfo {
+    display: grid;
+    gap: 15px;
+}
+
+/* Grille de profils */
+.esppro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.prozone{
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.prozone:hover {
+    border-color: #e50914;
+    transform: translateY(-2px);
+    
+}
+
+
+.prozone img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.prozone h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.prozone p {
+    color: #b3b3b3;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.ajoupro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    border: 2px dashed #b3b3b3;
+    background: transparent;
+}
+
+.ajoupro {
+    font-size: 40px;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+}
+
+/* Select */
+.selectpara {
+    background: #333;
+    border: 1px solid #555;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 150px;
+}
+
+.selectpara:focus {
+    outline: none;
+    border-color: #e50914;
+}
+
+/* Notifications avec toggle */
+.notifpara {
+    display: grid;
+    gap: 20px;
+}
+
+.notifartik {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notifartik:last-child {
+    border-bottom: none;
+}
+
+.notifinfo h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.notifinfo p {
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
+/* act avanse*/
+.act-desac {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.act-desac input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.glise {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.glise:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+input:checked + .glise {
+    background-color: #e50914;
+}
+
+input:checked + .glise:before {
+    transform: translateX(26px);
+}
+
+/* Options de sécurité */
+.sekirite option {
+    display: grid;
+    gap: 15px;
+}
+
+.sekiritebtn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-align: left;
+    margin: 10px;
+}
+
+.sekiritebtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #e50914;
+}
+
+.sekiritebtn.supp {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.sekiritebtn.supp:hover {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.flech {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.sekiritebtn:hover .flech {
+    transform: translateX(5px);
+}
+
+/* Styles responsive pour tablettes */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 20px 3%;
+    }
+    
+    .zonepara {
+        padding: 20px;
+    }
+    
+    .artipara {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .valepara {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .aboncat {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .abonaction {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .esppro {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .notifartik {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+/* Styles responsive pour smartphones */
+@media (max-width: 480px) {
+    .Tete {
+        padding: 0 20px;
+    }
+    
+    .logo h1 {
+        font-size: 20px;
+    }
+    
+    .main-content {
+        padding: 15px 20px;
+    }
+    
+    .page-header h1 {
+        font-size: 24px;
+    }
+    
+    .zonepara {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .zonepara h2 {
+        font-size: 20px;
+    }
+    
+    .abonaction {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .esppro {
+        grid-template-columns: 1fr;
+    }
+    
+    .prozone{
+        padding: 15px;
+    }
+    
+    .sekiritebtn {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+/* Animation d'entrée */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.zonepara {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+
+    </style>
+
+</head>
+<body>
+    <!-- En-tête avec navigation -->
+    <div class="Tete">
+        <div class="navikontene">
+            <div class="logo">
+                <h1>NETFLIX</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="navlien">Accueil</a>
+                <a href="seri.html" class="navlien">Séries</a>
+                <a href="Film.html" class="navlien">Films</a>
+                <a href="Parametre.html" class="navlien">Mon compte</a>
+            </div>
+            <div class="user-menu">
+                <div class="utilprofil">
+                    <img src="" alt="Avatar utilisateur">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- kontni prencipal -->
+    <div class="zonekontni">
+        <div class="para-kontene">
+            <!-- Titre de la page -->
+            <div class="tetinfo">
+                <h1>Paramètres du compte</h1>
+                <p>Gérez vos informations personnelles et vos préférences</p>
+            </div>
+
+            <!-- zone Profil -->
+            <div class="zonepara">
+                <h2>Informations du profil</h2>
+                <div class="esppara">
+                    <div class="artipara">
+                        <div>Nom d'utilisateur</div>
+                        <div class="valepara">
+                            <span>rolphmedine1@icloud.com</span>
+                            <button class="modibtn">Modifier</button>
+                        </div>
+                    </div>
+                    
+                    <div class="artipara">
+                        <div>Mot de passe</div>
+                        <div class="valepara">
+                            <span>••••••••••</span>
+                            <button class="modibtn">Modifier</button>
+                        </div>
+                    </div>
+                    
+                    <div class="artipara">
+                        <div>Numéro de téléphone</div>
+                        <div class="valepara">
+                            <span>+509 4109-5393</span>
+                            <button class="modibtn">Modifier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- zone Abonnement -->
+            <div class="zonepara">
+                <h2>Abonnement et facturation</h2>
+                <div class="aboncat">
+                    <div class="aboninfo">
+                        <h3>Plan Premium</h3>
+                        <p>6 écrans • Ultra HD • Téléchargements</p>
+                        <div class="prix">17,99 $/mois</div>
+                    </div>
+                    <div class="abonaction">
+                        <button class="primebtn">Modifier le plan</button>
+                        <button class="segondbtn">Annuler l'abonnement</button>
+                    </div>
+                </div>
+                
+                <div class="dlanginfo">
+                    <div class="artipara">
+                        <label>Mode de paiement</label>
+                        <div class="valepara">
+                            <span>•••• •••• •••• 1234 (Visa)</span>
+                            <button class="modibtn">Modifier</button>
+                        </div>
+                    </div>
+                    
+                    <div class="artipara">
+                        <label>Prochaine facturation</label>
+                        <div class="valepara">
+                            <span>03 Septembre 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- zone Abonnement -->
+            <div class="zonepara">
+                <h2>Plan disponible</h2>
+                <div class="aboncat">
+                    <div class="aboninfo">
+                        <h3>Plan Standard</h3>
+                        <p>2 écrans • 4k  • Téléchargements</p>
+                        <div class="prix">10,50 $/mois</div>
+                    </div>
+                    <div class="abonaction">
+                        <button class="primebtn">Modifier le plan</button>
+                        <button class="segondbtn">Annuler l'abonnement</button>
+                    </div>
+                </div>
+                <div class="aboncat">
+                    <div class="aboninfo">
+                        <h3>Plan Moyen</h3>
+                        <p>2 écrans •  1080p • Téléchargements</p>
+                        <div class="prix">5,99 $/mois</div>
+                    </div>
+                    <div class="abonaction">
+                        <button class="primebtn">Modifier le plan</button>
+                        <button class="segondbtn">Annuler l'abonnement</button>
+                    </div>
+                </div>
+                <div class="dlanginfo">
+                   
+                </div>
+            </div>
+             
+
+            <!-- zone Profil -->
+            <div class="zonepara">
+                <h2>Profils</h2>
+                <div class="esppro">
+                    <div class="prozone active">
+                        <img src="" alt="Profil principal">
+                        <h4>Rolph</h4>
+                        <p>Profil principal</p>
+                        <button class="modibtn">Modifier</button>
+                    </div>
+                    
+                    <div class="prozone active">
+                        <img src="" alt="Profil enfant">
+                        <h4>Angel</h4>
+                        <p>utilisateur 2</p>
+                        <button class="modibtn">Modifier</button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <!-- zone Préférences -->
+            <div class="zonepara">
+                <h2>Préférences de lecture</h2>
+                <div class="esppara">
+                    <div class="artipara">
+                        <div>Qualité vidéo</div>
+                        <div class="valepara">
+                            <select class="selectpara">
+                                <option>Automatique</option>
+                                <option>Faible</option>
+                                <option>Moyenne</option>
+                                <option>Élevée</option>
+                                <option>Ultra HD</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="artipara">
+                        <div>Langue audio par défaut</div>
+                        <div class="valepara">
+                            <select class="selectpara">
+                                <option>Français</option>
+                                <option >Anglais</option>
+                                <option>Espagnol</option>
+                                <option>Allemand</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="artipara">
+                        <label>Sous-titres</label>
+                        <div class="valepara">
+                            <select class="selectpara">
+                                <option>Désactivés</option>
+                                <option>Français</option>
+                                <option>Anglais</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- zone Notification -->
+            <div class="zonepara">
+                <h2>Notifications</h2>
+                <div class="notifpara">
+                    <div class="notifartik">
+                        <div class="notifinfo">
+                            <h4>Nouveautés et recommandations</h4>
+                            <p>Recevez des e-mails sur les nouveaux contenus</p>
+                        </div>
+                        <label class="act-desac">
+                            <input type="checkbox" >
+                            <span class="glise"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="notifartik">
+                        <div class="notifinfo">
+                            <h4>Rappels de facturation</h4>
+                            <p>Notifications avant le prélèvement</p>
+                        </div>
+                        <label class="act-desac">
+                            <input type="checkbox" >
+                            <span class="glise"></span>
+                        </label>
+                        
+                    </div>
+                    
+                    <div class="notifartik">
+                        <div class="notifinfo">
+                            <h4>Offres spéciales</h4>
+                            <p>Promotions et offres exclusives</p>
+                        </div>
+                        <label class="act-desac">
+                            <input type="checkbox">
+                            <span class="glise"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- zone Sécurité -->
+            <div class="zonepara">
+                <h2>Sécurité et confidentialité</h2>
+                <div class="sekirite option">
+                    <button class="sekiritebtn">
+                        <span>Gérer les appareils connectés</span>
+                        <span class="flech">→</span>
+                    </button>
+                    
+                    <button class="sekiritebtn">
+                        <span>Historique de visionnage</span>
+                        <span class="flech">→</span>
+                    </button>
+                    
+                    <button class="sekiritebtn">
+                        <span>Télécharger mes données</span>
+                        <span class="flech">→</span>
+                    </button>
+                    
+                    <button class="sekiritebtn supp">
+                        <span>Supprimer mon compte</span>
+                        <span class="flech">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

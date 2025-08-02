@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Connexion</title>
+    <style>
+        /* Reset CSS basique pour uniformiser l'affichage */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  body */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #434343 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+/* Entête ak logo Netflix */
+.Tete {
+    padding: 20px 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.logo h1 {
+    color: #e50914;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* kontenu prensipal centré */
+.kokont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* kontene formule konesion */
+.konek-kontene {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Formilr konnexion */
+.konek-form {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 60px 68px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.konek-form h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 28px;
+    color: white;
+}
+
+/* Group inputs ak labels */
+.antre-group {
+    position: relative;
+    margin-bottom: 16px;
+    background-color: #020202;
+}
+
+.antre-group input {
+    width: 100%;
+    height: 50px;
+    background: #333;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 16px 0;
+    font-size: 16px;
+    color: white;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.antre-group input:focus {
+    background: #454545;
+}
+
+.antre-group label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c8c8c;
+    font-size: 16px;
+    pointer-events:none ;
+    transition: all 0.3s ease;
+}
+
+/* Animasyon le label la seleksyone */
+.antre-group input:focus + label,
+.antre-group input:valid + label {
+    top: 12px;
+    font-size: 11px;
+    color: #8c8c8c;
+    transform: translateY(0);
+}
+
+/* Bouton konexion */
+.konek-btn {
+    width: 100%;
+    height: 48px;
+    background: #f70303;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 24px 0 12px;
+    transition: background-color 0.3s ease;
+}
+
+.konek-btn:hover {
+    background: #f40612;
+}
+
+/* Options du formulaire */
+.optionform {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    font-size: 13px;
+    
+}
+
+.sonje-mwen {
+    display: flex;
+    align-items: center;
+}
+
+.sonje-mwen input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.ed-lien {
+    color: #b3b3b3;
+    text-decoration: none;
+}
+
+.ed-lien:hover {
+    text-decoration: underline;
+}
+
+/* zone inscription */
+.inskri-section {
+    margin-bottom: 30px;
+    
+}
+
+.inskri-section  {
+    color: #737373;
+    font-size: 15px;
+}
+
+.inskri-lien {
+    color: white;
+    text-decoration: none;
+}
+
+.inskri-lien:hover {
+    text-decoration: underline;
+}
+
+/* Infomasyon reCAPTCHA */
+.infopaj {
+    font-size: 13px;
+    color: #8c8c8c;
+    line-height: 1.4;
+}
+
+/* Styles responsive tablettes */
+@media (max-width: 768px) {
+    .Tete {
+        padding: 20px 30px;
+    }
+    
+    .logo h1 {
+        font-size: 28px;
+    }
+    
+    .konek-form {
+        padding: 40px 30px;
+    }
+    
+    .konek-form h2 {
+        font-size: 28px;
+    }
+}
+
+/* Styles responsive smartphones */
+@media (max-width: 480px) {
+    .Tete {
+        padding: 15px 20px;
+    }
+    
+    .logo h1 {
+        font-size: 24px;
+    }
+    
+    .kokont-content {
+        padding: 10px;
+    }
+    
+    .konek-form {
+        padding: 30px 20px;
+        margin-top: 80px;
+    }
+    
+    .konek-form h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .antre-group input {
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .konek-btn {
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .optionform {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .inskri-section {
+        font-size: 14px;
+    }
+    
+    .infopaj {
+        font-size: 13px;
+    }
+}
+
+/* Animation d'entrée en fondu */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.konek-form {
+    animation: fadeIn 0.6s ease-out;
+}
+    </style>
+
+
+</head>
+<body>
+    <!-- En-tête avec le logo Netflix -->
+    <div class="Tete">
+        <div class="logo">
+            <h1>NETFLIX</h1>
+        </div>
+    </div>
+
+    <!-- kontni prensipal ak fomile koneksyon -->
+    <div class="kokont">
+        <div class="konek-kontene">
+            <div class="konek-form">
+                <h2>S'identifier</h2>
+                
+                <!-- Formulaire de connexion -->
+                <div>
+                    <div class="antre-group">
+                        <input type="email" id="email" required >
+                        <label for="email">E-mail ou numéro de téléphone</label>
+                    </div>
+                    
+                    <div class="antre-group">
+                        <input type="password" id="password" required>
+                        <label for="password">Mot de passe</label>
+                    </div>
+                    
+                   <a href="index.html"> <button type="submit" class="konek-btn">S'identifier</button></a>
+                    
+                    <div class="optionform">
+                        <div class="sonje-mwen">
+                            <input type="checkbox" id="sonje">
+                            <label for="sonje">Se souvenir de moi</label>
+                        </div>
+                        <a href="#" class="ed-lien">Besoin d'aide ?</a>
+                    </div>
+                </div>
+                
+                <!-- Liens supplémentaires -->
+                <div class="inskri-section">
+                Vous n'avez pas de compte ?
+                 <a class="inskri-lien" href="">
+                    Inscrivez-vous</a> 
+                </div>
+                
+                <div class="infopaj">
+                    <p>Cette page est protégée par Google reCAPTCHA 
+                        pour nous assurer que vous n'êtes pas un robot.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

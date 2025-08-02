@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zone des films</title>
+<style>
+/* Reset et styles de base */
+* { 
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Arial', sans-serif;
+background-color: #141414;
+color: #ffffff;
+line-height: 1.6;
+}
+
+
+/* Entete ba navigasyon */
+.navibar {
+position: fixed;
+top: 0;
+width: 100%;
+background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+z-index: 1000;
+padding: 15px 0;
+transition: background-color 0.3s ease;
+}
+
+.navibar:hover {
+background-color: rgba(0, 0, 0, 0.9);
+}
+
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+}
+
+.nav-gauche {
+display: flex;
+align-items: center;
+gap: 40px;
+}
+
+.logotex {
+font-size: 28px;
+font-weight: bold;
+color: #e50914;
+text-decoration: none;
+}
+
+.navi-meni {
+display: flex;
+gap: 25px;
+}
+
+.navi-lien {
+color: #fff;
+text-decoration: none;
+font-size: 16px;
+transition: color 0.3s ease;
+}
+
+.navi-lien:hover,
+.navi-lien.active {
+color: #e50914;
+}
+
+.navi-dwat {
+display: flex;
+align-items: center;
+gap: 25px;
+}
+
+.logo-rech{display: flex;
+border-radius: 5px;}
+
+.bwat-rechr input {
+background: rgba(0, 0, 0, 0.7);
+border: 1px solid #333;
+color: #ffffff;
+padding: 8px 15px;
+border-radius: ;
+font-size: 14px;
+border-bottom-left-radius:4px ;
+border-top-left-radius: 4px;
+border-right:none;
+}
+
+.bwat-rechr input::placeholder {
+color: #999;
+}
+
+.logorech{background: rgba(0, 0, 0, 0.7);
+height: 34px;
+width: 40px;
+text-align: center;
+border:  1px solid #333 ;
+border-bottom-right-radius:4px ;
+border-top-right-radius: 4px;
+border-left:none;
+}
+
+.locha{width: 100%;
+height: 100%;
+object-fit: contain;
+;}
+
+.user-profil img{
+width: 35px;
+height: 35px;
+border-radius: 50px;
+}
+
+/* zone tete */
+ .film-section {
+position: relative;
+height: 3vh;
+display: flex;
+align-items: center;
+margin-top: 70px;
+overflow: hidden;
+} 
+
+
+.film-content {
+position: relative;
+z-index: 2;
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+}
+
+/* film info */
+.film-info {
+max-width: 500px;
+}
+
+.film-title {
+font-size: 48px;
+font-weight: bold;
+margin-bottom: 20px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 8);
+}
+
+.film-description {
+font-size: 18px;
+margin-bottom: 30px;
+line-height: 1.5;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+
+/* fim pou gade yo */
+.content {
+padding: 40px 0;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.films-section {
+margin-bottom: 50px;
+padding: 0 20px;
+}
+
+.zone-tit{
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 20px;
+color: #ffffff;
+}
+
+
+/* ba defil pesonalize */
+
+.films-drag {
+display: flex;
+gap: 15px;
+overflow-x: auto;
+padding-bottom: 10px;
+overflow-y: hidden;
+}
+
+.films-drag::-webkit-scrollbar {
+height: 8px;
+}
+
+.films-drag::-webkit-scrollbar-track {
+background: #333;
+border-radius: 4px;
+}
+
+.films-drag::-webkit-scrollbar-thumb {
+background: #f90303;
+border-radius: 4px;
+}
+
+.films-drag::-webkit-scrollbar-thumb:hover {
+background: #ff0202;
+}
+
+
+/* espima */
+
+.films-card {
+flex: 0 0 200px;
+cursor: pointer;
+transition: transform 0.3s ease;
+border-radius: 8px;
+overflow: hidden;
+background-color: #222;
+}
+
+.films-card:hover {
+transform: scale(1.05);
+}
+
+.films-card img {
+width: 100%;
+height: 300px;
+object-fit: cover;
+display: block;
+}
+
+.films-info {
+padding: 15px;
+}
+
+.films-info h4 {
+font-size: 16px;
+font-weight: bold;
+margin-bottom: 5px;
+color: #ffffff;
+}
+
+.films-info p {
+font-size: 14px;
+color: #999;
+}
+
+/* Responsive paj */
+@media (max-width: 768px) {
+.nav-container {
+flex-direction: column;
+gap: 15px;
+padding: 10px 20px;
+}
+
+.nav-gauche {
+flex-direction: column;
+gap: 15px;
+text-align: center;
+}
+
+.navi-meni {
+gap: 15px;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.film-section {
+height: 2vh;
+margin-top: 120px;
+}
+
+.film-title {
+font-size: 32px;
+}
+
+.film-description {
+font-size: 16px;
+}
+
+.film-buttons {
+flex-direction: column;
+gap: 10px;
+}
+
+.boutn {
+padding: 10px 20px;
+font-size: 14px;
+}
+
+.films-card {
+flex: 0 0 150px;
+}
+
+.films-card img {
+height: 225px;
+}
+
+.zone-tit{
+font-size: 20px;
+}
+
+.pied-links {
+flex-direction: column;
+gap: 15px;
+}
+.logorech{min-height: 34.2px; }
+}
+
+@media (max-width: 480px) {
+.logotex {
+font-size: 24px;
+}
+
+.navi-lien {
+font-size: 14px;
+}
+
+.film-title {
+font-size: 28px;
+}
+
+.film-description {
+font-size: 14px;
+}
+
+.films-card {
+flex: 0 0 120px;
+}
+
+.films-card img {
+height: 180px;
+}
+
+.films-info {
+padding: 10px;
+}
+
+.films-info h4 {
+font-size: 14px;
+}
+
+.films-info p {
+font-size: 12px;
+}
+}
+
+/* Animasyon ak efe */
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.films-section {
+animation: fadeIn 0.6s ease-out;
+}
+
+.films-card:hover .films-info {
+background-color: rgba(0, 0, 0, 0.9);
+}
+.logo-rech:hover{outline: 2px solid #e01818;
+outline-offset: 2px;}
+
+/* Style zon seleksyone yo */
+.navi-lien:focus,
+.boutn:focus,
+.bwat-rechr input:focus {
+outline: 2px solid #e01818;
+outline-offset: 2px;
+}
+</style>
+</head>
+
+<!-- Zone ko -->
+<body>
+<!-- Entête ba navigation  -->
+<div class="navibar">
+<div class="nav-container">
+<div class="nav-gauche">
+<h1 class="logotex">NETFLIX</h1>
+<nav class="navi-meni">
+<a href="index.html" class="navi-lien ">Accueil</a>
+<a href="Film.html" class="navi-lien active">Films</a>
+<a href="seri.html" class="navi-lien">Séries</a>
+<a href="Nouveau.html" class="navi-lien">Nouveautés</a>
+<a href="Liste.html" class="navi-lien">Ma Liste</a>
+</nav>
+</div>
+<div class="navi-dwat">
+ <div class="logo-rech">  
+<div class="bwat-rechr">
+<input type="text" placeholder="Rechercher...">
+</div>
+<div class="logorech">
+<img class="locha" src="chache.png" alt="logochache">
+</div>
+</div> 
+<div class="user-profil">
+<img src="" alt="Profil">
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- zone principal -->
+<div class="film-section">
+</div>
+
+<!-- zone films -->
+<div class="content">
+<!-- aregarde -->
+<div class="films-section">
+<h3 class="section-title">A Regarder</h3>
+<div class="films-drag">
+<div class="films-card">
+<img src="inclus (39).JPG" alt="Film 1">
+<div class="films-info">
+<h4>SPLIT</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (40).JPG" alt="Film 2">
+<div class="films-info">
+<h4>THE WUALE</h4>
+<p>2024 • Comédie</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (41).JPG" alt="Film 3">
+<div class="films-info">
+<h4>CARRY-ON</h4>
+<p>2024 • Thriller</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (42).JPG" alt="Film 4">
+<div class="films-info">
+<h4>CODE 8</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (43).JPG" alt="Film 5">
+<div class="films-info">
+<h4>CODE 8 PART 2</h4>
+<p>2024 • Sci-Fi</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (44).JPG" alt="Film 6">
+<div class="films-info">
+<h4>GLASS</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- LA SELECTION -->
+<div class="films-section">
+<h3 class="section-title">La Selection</h3>
+<div class="films-drag">
+<div class="films-card">
+<img src="inclus (44).JPG" alt="Film 1">
+<div class="films-info">
+<h4>THE GRAY MAN</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (45).JPG" alt="Film 2">
+<div class="films-info">
+<h4>TAKEDOWN</h4>
+<p>2024 • Comédie</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (1).JPG" alt="Film 3">
+<div class="films-info">
+<h4>DAY SHIFT</h4>
+<p>2024 • Thriller</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (47).JPG" alt="Film 4">
+<div class="films-info">
+<h4>BULLET TRAIN</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (48).JPG" alt="Film 5">
+<div class="films-info">
+<h4>THE MENU</h4>
+<p>2024 • Sci-Fi</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (49).JPG" alt="Film 6">
+<div class="films-info">
+<h4>DONT LOOK UP</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+</div>
+</div>
+    
+<!-- Films populaires -->
+<div class="films-section">
+<h3 class="section-title">Films populaires</h3>
+<div class="films-drag">
+<div class="films-card">
+<img src="inclus (33).JPG" alt="Film 1">
+<div class="films-info">
+<h4>THE OLD GUARD</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (34).JPG" alt="Film 2">
+<div class="films-info">
+<h4>IN THE HEART OF THE SEA</h4>
+<p>2024 • Romance</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (35).JPG" alt="Film 3">
+<div class="films-info">
+<h4>DUNE</h4>
+<p>2024 • Thriller</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (36).JPG" alt="Film 4">
+<div class="films-info">
+<h4>ARRIVAL</h4>
+<p>2024 • Comédie</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (37).JPG" alt="Film 5">
+<div class="films-info">
+<h4>Aventure Spatiale</h4>
+<p>2024 • Sci-Fi</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (38).JPG" alt="Film 6">
+<div class="films-info">
+<h4>GLASS</h4>
+<p>2024 • ACTION</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Nouveautés -->
+<div class="films-section">
+<h3 class="section-title">Dessin animee</h3>
+<div class="films-drag">
+<div class="films-card">
+<img src="inclus (20).JPG" alt="Action 1">
+<div class="films-info">
+<h4>ZOOTOPIA</h4>
+<p>2024 • Fantasy</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (21).JPG" alt="Action 2">
+<div class="films-info">
+<h4>BABY BOSS</h4>
+<p>2024 • Sci-Fi</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (22).JPG" alt="Action 3">
+<div class="films-info">
+<h4>NEMO</h4>
+<p>2024 • Romance</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (23).JPG" alt="action 4">
+<div class="films-info">
+<h4>SHREK</h4>
+<p>2024 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (24).JPG" alt="action 5">
+<div class="films-info">
+<h4>ICE AGE THE MELTDOWN</h4>
+<p>2024 • Comédie</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (25).JPG" alt="action 6">
+<div class="films-info">
+<h4>BIG HERO 6</h4>
+<p>2024 • FANTASY</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Films d'action -->
+<div class="films-section">
+<h3 class="section-title">Films d'action</h3>
+<div class="films-drag">
+<div class="films-card">
+<img src="inclus (27).JPG"  alt= "Action 1">
+<div class="films-info">
+<h4>Mission Impossible</h4>
+<p>2021 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (28).JPG" alt="Action 2">
+<div class="films-info">
+<h4>Guerre Totale</h4>
+<p>2016 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (29).JPG" alt="Action 3">
+<div class="films-info">
+<h4>Super Héros</h4>
+<p>2020 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (30).JPG" alt="Action 4">
+<div class="films-info">
+<h4>Combat Final</h4>
+<p>2019 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (31).JPG" alt="Action 5">
+<div class="films-info">
+<h4>Espion Secret</h4>
+<p>2022 • Action</p>
+</div>
+</div>
+<div class="films-card">
+<img src="inclus (32).JPG" alt="Action 6">
+<div class="films-info">
+<h4>Vengeance</h4>
+<p>2025 • Action</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
